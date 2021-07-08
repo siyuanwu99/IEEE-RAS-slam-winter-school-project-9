@@ -35,6 +35,11 @@ def sum_loss_function(y_true, y_pred, w1, w2, w3, maxDepthVal=1000.0 / 10.0):
 
 def BerHu_loss_function(y_true, y_pred, value):
     c = 0.2 * tf.keras.backend.max(y_true - y_pred)
+    residual = tf.keras.backend.abs(y_true - y_pred)
 
+    if residual <= c:
+        return residual
+    else:
+        return 0.5 / c * (tf.keras.backend.square(c) + tf.keras.backend.square(residual))
 
     return

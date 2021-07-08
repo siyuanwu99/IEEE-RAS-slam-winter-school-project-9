@@ -1,7 +1,7 @@
 import numpy as np
 import tensorflow as tf
 import argparse
-from PIL import Image # Imports PIL module
+from PIL import Image  # Imports PIL module
 from io import BytesIO
 from tensorflow.keras.utils import Sequence
 from skimage.transform import resize
@@ -15,22 +15,21 @@ from model import *
 from skimage import io
 from zipfile import ZipFile
 
-
 config = tf.compat.v1.ConfigProto()
 config.gpu_options.allow_growth = True
 sess = tf.compat.v1.Session(config=config)
 
 # python train.py --data nyu
-parser = argparse.ArgumentParser(description='My first complete deep learning code') #Input parameters
-parser.add_argument('--batch_size', type=int, default=2, help='Batch size')#The batch size of the training network
-parser.add_argument('--max_depth', type=int, default=1000, help='The maximal depth value')#The max depth of the images
-parser.add_argument('--data', default="nyu", type=str, help='Training dataset.')#A default train dataset
-parser.add_argument('--gpus', type=int, default=1, help='The number of GPUs to use')#GPU number
+parser = argparse.ArgumentParser(description='My first complete deep learning code')  # Input parameters
+parser.add_argument('--batch_size', type=int, default=2, help='Batch size')  # The batch size of the training network
+parser.add_argument('--max_depth', type=int, default=1000,
+                    help='The maximal depth value')  # The max depth of the images
+parser.add_argument('--data', default="nyu", type=str, help='Training dataset.')  # A default train dataset
+parser.add_argument('--gpus', type=int, default=1, help='The number of GPUs to use')  # GPU number
 parser.add_argument('--epochs', type=int, default=1, help='Number of epochs')
 parser.add_argument('--lr', type=int, default=0.0001, help='Learning rate')
 
-args = parser.parse_args() #Add input as parameters
-
+args = parser.parse_args()  # Add input as parameters
 
 
 def _parse_function(filename, label):
@@ -50,6 +49,7 @@ def _parse_function(filename, label):
 
     return rgb, depth
 
+
 if args.data == 'nyu':
     ## Train_dataset
     root = '/home/siyuan/Desktop/slam_winter_school'
@@ -58,7 +58,7 @@ if args.data == 'nyu':
     nyu2_train = list((row.split(',') for row in (csv).split('\n') if len(row) > 0))
     nyu2_train = sklearn.utils.shuffle(nyu2_train, random_state=0)
     filenames = [os.path.join(root, i[0]) for i in nyu2_train]
-    labels = [os.path.join(root, i[1])for i in nyu2_train]
+    labels = [os.path.join(root, i[1]) for i in nyu2_train]
     length = len(filenames)
     dataset = tf.data.Dataset.from_tensor_slices((filenames, labels))
     dataset = dataset.shuffle(buffer_size=len(filenames), reshuffle_each_iteration=True)
@@ -84,16 +84,15 @@ if args.data == 'nyu':
 #########################Based model Densenet 169##########################
 
 
-
 #### UpscaleBlock_model ############
 #### UpscaleBlock_model2 ############
 #### UpscaleBlock_model3 ############
 #### UpscaleBlock_model4 ############
 #### Model Final part ############
 outputs1_5 = tf.keras.layers.UpSampling2D(size=(2, 2), interpolation='bilinear')(outputs7_4)
-outputs_final=tf.keras.layers.Conv2D(filters=1, kernel_size=3, strides=1, padding='same')(outputs1_5)
+outputs_final = tf.keras.layers.Conv2D(filters=1, kernel_size=3, strides=1, padding='same')(outputs1_5)
 
-model=tf.keras.Model(inputs=basemodel.inputs, outputs=outputs_final)
+model = tf.keras.Model(inputs=basemodel.inputs, outputs=outputs_final)
 print('\nModel created.')
 
 print(model.summary())
@@ -102,33 +101,30 @@ print(model.summary())
 basemodel = model
 if args.gpus > 1: model = tf.keras.utils.multi_gpu_model(model, gpus=args.gpus)
 
-
-
 print('\n\n\n', 'Compiling model..')
 ######################### Trainning ################################
 
 model.compile(optimizer=tf.optimizers.Adam(1e-2, lr=args.lr, amsgrad=True), loss=depth_loss_function)
 print('\n\n\n', 'Compiling complete')
 
-
-model.fit(train_generator,epochs=args.epochs,steps_per_epoch=length//batch_size)
+model.fit(train_generator, epochs=args.epochs, steps_per_epoch=length // batch_size)
 ###########################Save model###############################
 model.save("./models/model_with.h5", include_optimizer=False)
 
-model.save('./models/', save_format='tf',include_optimizer=False)
+model.save('./models/', save_format='tf', include_optimizer=False)
 
 ##########################Result test################################
-score=model.evaluate(test_generator,steps=10)
+score = model.evaluate(test_generator, steps=10)
 
-print("last score:",score)
+print("last score:", score)
 
 #########################Predict a result#############################
 image_decoded = tf.image.decode_jpeg(tf.io.read_file('1.jpg'))
 rgb = tf.image.convert_image_dtype(image_decoded, dtype=tf.float32)
-rgb=np.expand_dims(rgb, axis = 0)
-#model = tf.keras.models.load_model('./models/model.h5',custom_objects={'depth_loss_function': depth_loss_function})
-result=model.predict(rgb)
-#print(result)
-image_new=result[0,:,:,0]
+rgb = np.expand_dims(rgb, axis=0)
+# model = tf.keras.models.load_model('./models/model.h5',custom_objects={'depth_loss_function': depth_loss_function})
+result = model.predict(rgb)
+# print(result)
+image_new = result[0, :, :, 0]
 plt.imshow(image_new)
 plt.show()
