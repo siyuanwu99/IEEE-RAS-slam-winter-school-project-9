@@ -27,7 +27,7 @@ parser.add_argument('--max_depth', type=int, default=1000, help='The maximal dep
 parser.add_argument('--data', default="nyu", type=str, help='Training dataset.')#A default train dataset
 parser.add_argument('--gpus', type=int, default=1, help='The number of GPUs to use')#GPU number
 parser.add_argument('--epochs', type=int, default=1, help='Number of epochs')
-
+parser.add_argument('--lr', type=int, default=0.0001, help='Learning rate')
 
 args = parser.parse_args() #Add input as parameters
 
@@ -52,12 +52,13 @@ def _parse_function(filename, label):
 
 if args.data == 'nyu':
     ## Train_dataset
-    csv_file = 'D:/MATLAB/Deep_learnning_based_conformal_NRSfM/Data_generation/data/data_train.csv'
+    root = '/home/siyuan/Desktop/slam_winter_school'
+    csv_file = '../data/nyu2_train.csv'
     csv = open(csv_file, 'r').read()
     nyu2_train = list((row.split(',') for row in (csv).split('\n') if len(row) > 0))
     nyu2_train = sklearn.utils.shuffle(nyu2_train, random_state=0)
-    filenames = [os.path.join('D:/MATLAB/Deep_learnning_based_conformal_NRSfM/Data_generation',i[0]) for i in nyu2_train]
-    labels = [os.path.join('D:/MATLAB/Deep_learnning_based_conformal_NRSfM/Data_generation',i[1])for i in nyu2_train]
+    filenames = [os.path.join(root, i[0]) for i in nyu2_train]
+    labels = [os.path.join(root, i[1])for i in nyu2_train]
     length = len(filenames)
     dataset = tf.data.Dataset.from_tensor_slices((filenames, labels))
     dataset = dataset.shuffle(buffer_size=len(filenames), reshuffle_each_iteration=True)
@@ -66,12 +67,12 @@ if args.data == 'nyu':
     batch_size = args.batch_size  # batch_size from inputs, default value is 2
     train_generator = dataset.batch(batch_size=batch_size)
     ## Test_dataset
-    csv_file_test = 'D:/MATLAB/Deep_learnning_based_conformal_NRSfM/Data_generation/data/data_test.csv'
+    csv_file_test = '../data/nyu2_test.csv'
     csv_test = open(csv_file_test, 'r').read()
     nyu2_test = list((row.split(',') for row in (csv_test).split('\n') if len(row) > 0))
     nyu2_test = sklearn.utils.shuffle(nyu2_test, random_state=0)
-    filenames_test = [os.path.join('D:/MATLAB/Deep_learnning_based_conformal_NRSfM/Data_generation', i[0]) for i in nyu2_test]
-    labels_test = [os.path.join('D:/MATLAB/Deep_learnning_based_conformal_NRSfM/Data_generation', i[1]) for i in nyu2_test]
+    filenames_test = [os.path.join(root, i[0]) for i in nyu2_test]
+    labels_test = [os.path.join(root, i[1]) for i in nyu2_test]
     length_test = len(filenames_test)
     dataset_test = tf.data.Dataset.from_tensor_slices((filenames_test, labels_test))
     dataset_test = dataset_test.shuffle(buffer_size=len(filenames_test), reshuffle_each_iteration=True)
@@ -81,6 +82,9 @@ if args.data == 'nyu':
     test_generator = dataset_test.batch(batch_size=batch_size)
 
 #########################Based model Densenet 169##########################
+
+
+
 #### UpscaleBlock_model ############
 #### UpscaleBlock_model2 ############
 #### UpscaleBlock_model3 ############
@@ -89,7 +93,7 @@ if args.data == 'nyu':
 outputs1_5 = tf.keras.layers.UpSampling2D(size=(2, 2), interpolation='bilinear')(outputs7_4)
 outputs_final=tf.keras.layers.Conv2D(filters=1, kernel_size=3, strides=1, padding='same')(outputs1_5)
 
-model=tf.keras.Model(inputs=base_model.inputs, outputs=outputs_final)
+model=tf.keras.Model(inputs=basemodel.inputs, outputs=outputs_final)
 print('\nModel created.')
 
 print(model.summary())
@@ -102,8 +106,8 @@ if args.gpus > 1: model = tf.keras.utils.multi_gpu_model(model, gpus=args.gpus)
 
 print('\n\n\n', 'Compiling model..')
 ######################### Trainning ################################
-learning_rate=0.0001
-model.compile(optimizer=tf.optimizers.Adam(1e-2,lr=learning_rate, amsgrad=True),loss=depth_loss_function)
+
+model.compile(optimizer=tf.optimizers.Adam(1e-2, lr=args.lr, amsgrad=True), loss=depth_loss_function)
 print('\n\n\n', 'Compiling complete')
 
 

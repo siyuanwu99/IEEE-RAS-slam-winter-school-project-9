@@ -14,3 +14,10 @@ approximate 4.1G
 # Codes
 
 I put our codes into the `/src` folder
+
+# Usage
+
+- 暂时先用 train.py 进行训练，模型保存到model文件夹中，以时间命名
+- Berhu loss 还没写，我正在写
+- data augementation 还没加
+- 可能链路不通
