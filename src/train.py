@@ -22,12 +22,12 @@ sess = tf.compat.v1.Session(config=config)
 
 # python train.py --data nyu
 parser = argparse.ArgumentParser(description='My first complete deep learning code')  # Input parameters
-parser.add_argument('--batch_size', type=int, default=2, help='Batch size')  # The batch size of the training network
+parser.add_argument('--batch_size', type=int, default=10, help='Batch size')  # The batch size of the training network
 parser.add_argument('--max_depth', type=int, default=1000,
                     help='The maximal depth value')  # The max depth of the images
 parser.add_argument('--data', default="nyu", type=str, help='Training dataset.')  # A default train dataset
 parser.add_argument('--gpus', type=int, default=1, help='The number of GPUs to use')  # GPU number
-parser.add_argument('--epochs', type=int, default=1, help='Number of epochs')
+parser.add_argument('--epochs', type=int, default=100, help='Number of epochs')
 parser.add_argument('--lr', type=int, default=0.0001, help='Learning rate')
 
 args = parser.parse_args()  # Add input as parameters
@@ -35,8 +35,8 @@ args = parser.parse_args()  # Add input as parameters
 
 def _parse_function(filename, label):
     # Read images from disk
-    shape_rgb = (512, 512, 3)
-    shape_depth = (512, 512, 1)
+    shape_rgb = (240, 320, 3)
+    shape_depth = (240, 320, 1)
     image_decoded = tf.image.decode_jpeg(tf.io.read_file(filename))
     depth_resized = tf.image.resize(tf.image.decode_jpeg(tf.io.read_file(label)),
                                     [shape_depth[0], shape_depth[1]])
