@@ -10,3 +10,7 @@ approximate 4.1G
 - [ ] Improve the loss function.
 - [ ] Add some data augmentation.
 - [ ] New encoder and decoder network (optional).
+
+# Codes
+
+I put our codes into the `/src` folder
