@@ -8,15 +8,27 @@ approximate 4.1G
 
 - [x] Finish the network. You need to configure environment, revise the dataset folder, adjust parameters, and fill this gap. The used functions may include: “tensorflow.keras.applications.DenseNet169”, “tf.keras.layers.Conv2D”, “tf.keras.layers.UpSampling2D”, “tf.keras.layers.Concatenate”, “tf.keras.layers.LeakyReLU”, and “tf.keras.Model”.
 - [x] Improve the loss function.
-- [ ] Add some data augmentation.
-- [ ] New encoder and decoder network (optional).
+- [x] Add some data augmentation.
 
-# Codes
 
-I put our codes into the `/src` folder
 
-# Usage
+# Usage 
+The source code is in /src
+```console
+foo@bar:~$ cd ./src
+```
 
-- 先用 train.py 进行训练，模型会保存到model文件夹中，以时间命名
-- 使用 evaluate.py 进行测试，
-- data augementation 加在 `_parse_function` 里面
+```python
+# train
+python train.py
+```
+
+```python
+# evaluate depth metric
+python evaluate.py
+```
+
+```python
+# test and visualization
+python test.py --input 'kitti-examples/*.png'
+```
