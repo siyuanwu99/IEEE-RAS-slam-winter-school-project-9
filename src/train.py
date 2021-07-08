@@ -54,8 +54,8 @@ def _parse_function(filename, label):
 
 ######################### Prepare Trainning Set ##########################
 current_time = time.strftime("%m-%d-%H-%M-%S", time.localtime())
-## Train_dataset
 
+## Train_dataset
 root = '/home/siyuan/Desktop/slam_winter_school/'  # Please change this root path
 csv_file = '../data/test_train.csv'
 csv = open(csv_file, 'r').read()
