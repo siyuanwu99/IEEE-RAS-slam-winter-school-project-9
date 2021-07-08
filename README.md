@@ -6,8 +6,8 @@ approximate 4.1G
 
 # Tasks
 
-- [ ] Finish the network. You need to configure environment, revise the dataset folder, adjust parameters, and fill this gap. The used functions may include: “tensorflow.keras.applications.DenseNet169”, “tf.keras.layers.Conv2D”, “tf.keras.layers.UpSampling2D”, “tf.keras.layers.Concatenate”, “tf.keras.layers.LeakyReLU”, and “tf.keras.Model”.
-- [ ] Improve the loss function.
+- [x] Finish the network. You need to configure environment, revise the dataset folder, adjust parameters, and fill this gap. The used functions may include: “tensorflow.keras.applications.DenseNet169”, “tf.keras.layers.Conv2D”, “tf.keras.layers.UpSampling2D”, “tf.keras.layers.Concatenate”, “tf.keras.layers.LeakyReLU”, and “tf.keras.Model”.
+- [x] Improve the loss function.
 - [ ] Add some data augmentation.
 - [ ] New encoder and decoder network (optional).
 
@@ -17,6 +17,6 @@ I put our codes into the `/src` folder
 
 # Usage
 
-- 暂时先用 train.py 进行训练，模型保存到model文件夹中，以时间命名
+- 先用 train.py 进行训练，模型会保存到model文件夹中，以时间命名
+- 使用 evaluate.py 进行测试，
 - data augementation 加在 `_parse_function` 里面
-- 
