@@ -21,7 +21,7 @@ sess = tf.compat.v1.Session(config=config)
 
 # python train.py --data nyu
 parser = argparse.ArgumentParser(description='My first complete deep learning code')  # Input parameters
-parser.add_argument('--batch_size', type=int, default=2, help='Batch size')  # The batch size of the training network
+parser.add_argument('--batch_size', type=int, default=1, help='Batch size')  # The batch size of the training network
 parser.add_argument('--max_depth', type=int, default=1000,
                     help='The maximal depth value')  # The max depth of the images
 parser.add_argument('--data', default="nyu", type=str, help='Training dataset.')  # A default train dataset

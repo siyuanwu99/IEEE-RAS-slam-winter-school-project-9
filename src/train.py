@@ -22,7 +22,7 @@ sess = tf.compat.v1.Session(config=config)
 
 # python train.py --data nyu
 parser = argparse.ArgumentParser(description='My first complete deep learning code')  # Input parameters
-parser.add_argument('--batch_size', type=int, default=10, help='Batch size')  # The batch size of the training network
+parser.add_argument('--batch_size', type=int, default=1, help='Batch size')  # The batch size of the training network
 parser.add_argument('--max_depth', type=int, default=1000,
                     help='The maximal depth value')  # The max depth of the images
 parser.add_argument('--data', default="nyu", type=str, help='Training dataset.')  # A default train dataset
@@ -80,7 +80,7 @@ if args.gpus > 1: model = tf.keras.utils.multi_gpu_model(model, gpus=args.gpus)
 
 ######################### Trainning ################################
 print('\n\n\n', 'Compiling model..')
-model.compile(optimizer=tf.optimizers.Adam(1e-2, lr=args.lr, amsgrad=True), loss=depth_loss_function)
+model.compile(optimizer=tf.optimizers.Adam(1e-2, lr=args.lr, amsgrad=True), loss=sum2)
 # model.summary()
 print('\n\n\n', 'Compiling complete')
 
