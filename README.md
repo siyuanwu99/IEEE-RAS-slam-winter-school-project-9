@@ -6,7 +6,7 @@ This work is to implement a Monocular Depth Estimation network using Tensorflow 
 
 
 ## Award
-We have been awarded the 3rd Prize (6 groups over 19 groups were awarded 1st, 2nd, 3rd prize) on IEEE RAS Winter School on SLAM in Deformable Environments. This repo contains the code and some documents about our project. If you have any problems, please feel free to email to weihaoxuan97 or siyuanwu99 at gmail dot com.
+We have been awarded the 3rd Prize (6 groups over 19 groups were awarded 1st, 2nd, 3rd prize) and 100 AUD :smirk: on IEEE RAS Winter School on SLAM in Deformable Environments. This repo contains the code and some documents about our project. If you have any problems, please feel free to contact weihaoxuan97 or siyuanwu99 at gmail dot com.
 
 ## Tasks
 
