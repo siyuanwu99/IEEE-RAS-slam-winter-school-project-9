@@ -5,7 +5,7 @@
 approximate 4.1G
 
 # Award
-We have been awarded with 3rd Prize on IEEE RAS Winter School on SLAM in Deformable Environments. This repo contains the code and some documents about our project.
+We have been awarded the 3rd Prize (6 groups over 19 groups were awarded prize) on IEEE RAS Winter School on SLAM in Deformable Environments. This repo contains the code and some documents about our project.
 
 # Tasks
 
