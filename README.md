@@ -1,4 +1,4 @@
-# slam-winter-schoo
+# IEEE RAS Winter School on SLAM in Deformable Environments (Project 9d)
 This repo is the code and documents of project 9d for IEEE RAS Winter School on SLAM in Deformable Environments. It has been done by several prospective students from both master program of [Robotics](https://www.tudelft.nl/en/education/programmes/masters/robotics/msc-robotics) at TU Delft and [Autonomous Systems](https://www.dtu.dk/english/education/msc/programmes/autonomous-systems) from DTU.
 
 ## Brief Description
