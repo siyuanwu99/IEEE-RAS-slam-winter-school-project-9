@@ -1,12 +1,12 @@
 # IEEE RAS Winter School on SLAM in Deformable Environments (Project 9d)
-This repo is the code and documents of project 9d for IEEE RAS Winter School on SLAM in Deformable Environments. It has been done by several prospective students from both master program of [Robotics](https://www.tudelft.nl/en/education/programmes/masters/robotics/msc-robotics) at TU Delft and [Autonomous Systems](https://www.dtu.dk/english/education/msc/programmes/autonomous-systems) from DTU.
+This repo is the code and documents of project 9d during IEEE RAS Winter School on SLAM in Deformable Environments. It has been done by several prospective students from both master program of [Robotics](https://www.tudelft.nl/en/education/programmes/masters/robotics/msc-robotics) at TU Delft and [Autonomous Systems](https://www.dtu.dk/english/education/msc/programmes/autonomous-systems) from DTU.
 
 ## Brief Description
-This work is to implement a Monocular Depth Estimation network using Tensorflow 2 and it is based on the previous work [High Quality Monocular Depth Estimation via Transfer Learning](https://arxiv.org/abs/1812.11941) wit modifications.
+This work is to implement a Monocular Depth Estimation network using Tensorflow 2 and it is based on the previous work [High Quality Monocular Depth Estimation via Transfer Learning](https://arxiv.org/abs/1812.11941) with modifications.
 
 
 ## Award
-We have been awarded the 3rd Prize (6 groups over 19 groups were awarded prize) on IEEE RAS Winter School on SLAM in Deformable Environments. This repo contains the code and some documents about our project. If you have any problems, feel free to email to weihaoxuan97 or siyuanwu99 at gmail dot com.
+We have been awarded the 3rd Prize (6 groups over 19 groups were awarded 1st, 2nd, 3rd prize) on IEEE RAS Winter School on SLAM in Deformable Environments. This repo contains the code and some documents about our project. If you have any problems, please feel free to email to weihaoxuan97 or siyuanwu99 at gmail dot com.
 
 ## Tasks
 
