@@ -1,3 +1,9 @@
+[![Contributors][contributors-shield]][contributors-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+
+
 # IEEE RAS Winter School on SLAM in Deformable Environments (Project 9d)
 This repo is the code and documents of project 9d during IEEE RAS Winter School on SLAM in Deformable Environments. It has been done by several prospective students from both master program of [Robotics](https://www.tudelft.nl/en/education/programmes/masters/robotics/msc-robotics) at TU Delft and [Autonomous Systems](https://www.dtu.dk/english/education/msc/programmes/autonomous-systems) from DTU.
 
@@ -36,3 +42,17 @@ python evaluate.py
 # test and visualization
 python test.py --input 'kitti-examples/*.png'
 ```
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/edmundwsy/IEEE-RAS-slam-winter-school-project-9.svg?style=for-the-badge
+[contributors-url]: https://github.com/edmundwsy/IEEE-RAS-slam-winter-school-project-9/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/edmundwsy/IEEE-RAS-slam-winter-school-project-9.svg?style=for-the-badge
+[forks-url]: https://github.com/edmundwsy/IEEE-RAS-slam-winter-school-project-9/network/members
+[stars-shield]: https://img.shields.io/github/stars/edmundwsy/IEEE-RAS-slam-winter-school-project-9.svg?style=for-the-badge
+[stars-url]: https://github.com/edmundwsy/IEEE-RAS-slam-winter-school-project-9/stargazers
+[issues-shield]: https://img.shields.io/github/issues/edmundwsy/IEEE-RAS-slam-winter-school-project-9.svg?style=for-the-badge
+[issues-url]: https://github.com/edmundwsy/IEEE-RAS-slam-winter-school-project-9/issues
+[license-shield]: https://img.shields.io/github/license/edmundwsy/IEEE-RAS-slam-winter-school-project-9.svg?style=for-the-badge
+[license-url]: https://github.com/edmundwsy/IEEE-RAS-slam-winter-school-project-9/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[product-screenshot]: images/screenshot.png
